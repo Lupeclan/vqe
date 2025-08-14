@@ -1,0 +1,35 @@
+name: vqe
+services:
+  api:
+    build:
+      dockerfile: build/Dockerfile
+      context: ../.
+      network: host
+      tags:
+        - vqe-api:latest
+    networks:
+      - vqe
+    command:
+      - "python3"
+      - "-m"
+      - "gunicorn"
+      - "--bind"
+      - "0.0.0.0:80"
+      - "--workers"
+      - "1"
+      - "--threads"
+      - "8"
+      - "--worker-class"
+      - "gevent"
+      - "--capture-output"
+      - "--reload"
+      - "wsgi:app"
+    ports:
+      - "8080:80"
+    volumes:
+      - ../:/app
+    environment:
+      - GEVENT_SUPPORT=True
+
+networks:
+  vqe:
