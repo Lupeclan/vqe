@@ -30,6 +30,7 @@ services:
       - ../:/app
     environment:
       - GEVENT_SUPPORT=True
+      - RECOMMENDED_ROUTE=api/v1
 
 networks:
   vqe:
