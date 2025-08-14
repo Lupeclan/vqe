@@ -31,6 +31,17 @@ services:
     environment:
       - GEVENT_SUPPORT=True
       - RECOMMENDED_ROUTE=api/v1
+  unit-test:
+    image: vqe-api:latest
+    command:
+      - "python3"
+      - "-m"
+      - "pytest"
+      - "test/unit/."
+    volumes:
+      - ../:/app
+    environment:
+      - ENVIRONMENT=TESTING
 
 networks:
   vqe:

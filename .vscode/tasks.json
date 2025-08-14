@@ -1,0 +1,38 @@
+{
+    "tasks": [
+        {
+            "command": "docker-compose build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "label": "Build",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            },
+            "type": "shell"
+        },
+        {
+            "command": "docker-compose up unit-test",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "label": "Unit Test",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            },
+            "type": "shell"
+        }
+    ]
+}
