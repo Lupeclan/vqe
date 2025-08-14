@@ -8,7 +8,6 @@
     - Server with a REST or GraphQL endpoint which queries the data storage.
     - Documentation to easily navigate the APIs.
 - Usage of third-party platforms (e.g., Meilisearch or Algolia) is not allowed.
-- Send us a link to the project's GitHub repository and Include instructions to setup and run your application.
 
 ## Environment Prerequisites
 
@@ -28,8 +27,11 @@
 1. Clone the repository locally
 2. Navigate to the cloned repositories build folder: `cd vqe/build`
 3. Run a docker-compose build: `docker-compose build`
-4. Run the services via docker-compose up: `docker-compose up`
-    - 3 & 4 can be consolidated into one step via: `docker-compose up --build`
-5. Navigate to /ping endpoint to test connectivity:
+
+### Running the application
+
+1. Ensure that all steps under [Build](#build) are complete.
+2. Run the services via docker-compose: `docker-compose up`
+3. Navigate to `/ping` endpoint to test connectivity:
     - http://127.0.0.1:8080/ping
     - http://localhost:8080/ping
