@@ -33,6 +33,8 @@ services:
       - RECOMMENDED_ROUTE=api/v1
   unit-test:
     image: vqe-api:latest
+    profiles:
+      - test
     command:
       - "python3"
       - "-m"

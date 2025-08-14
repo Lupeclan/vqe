@@ -1,6 +1,24 @@
 {
     "tasks": [
         {
+            "command": "docker-compose up api",
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            },
+            "label": "Run",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            },
+            "problemMatcher": [],
+            "type": "shell"
+        },
+        {
             "command": "docker-compose build",
             "group": {
                 "kind": "build",
@@ -18,7 +36,7 @@
             "type": "shell"
         },
         {
-            "command": "docker-compose up unit-test",
+            "command": "docker-compose --profile test up unit-test",
             "group": {
                 "kind": "test",
                 "isDefault": true
