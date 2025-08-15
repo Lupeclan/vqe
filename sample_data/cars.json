@@ -1,0 +1,412 @@
+[
+    {
+        "colour": "Color of the car.",
+        "engine_size": "Engine size in liters.",
+        "horsepower": "Engine horsepower.",
+        "make": "Manufacturer of the car.",
+        "model": "Model name of the car.",
+        "seats": "Number of seats.",
+        "top_speed": "Maximum speed in km/h.",
+        "year": "Year the car was manufactured."
+    },
+    {
+        "colour": "SteelBlue",
+        "engine_size": 4.8,
+        "horsepower": 214,
+        "make": "Astoria Automotive",
+        "model": "EcoNova",
+        "seats": 5,
+        "top_speed": 253.6,
+        "year": 2020
+    },
+    {
+        "colour": "HotPink",
+        "engine_size": 1.3,
+        "horsepower": 351,
+        "make": "Falcon Exotics",
+        "model": "ZenDrive",
+        "seats": 8,
+        "top_speed": 273.4,
+        "year": 1961
+    },
+    {
+        "colour": "Azure",
+        "engine_size": 2.5,
+        "horsepower": 148,
+        "make": "Eon Energy Cars",
+        "model": "Voltura",
+        "seats": 5,
+        "top_speed": 204.2,
+        "year": 2019
+    },
+    {
+        "colour": "Magenta",
+        "engine_size": 3.7,
+        "horsepower": 399,
+        "make": "PureVolt",
+        "model": "HydraVolt",
+        "seats": 8,
+        "top_speed": 316.6,
+        "year": 2013
+    },
+    {
+        "colour": "MediumPurple",
+        "engine_size": 5.3,
+        "horsepower": 313,
+        "make": "HydraWorks",
+        "model": "Celera",
+        "seats": 7,
+        "top_speed": 298.2,
+        "year": 2010
+    },
+    {
+        "colour": "Navy",
+        "engine_size": 2.0,
+        "horsepower": 645,
+        "make": "Summit Vehicles",
+        "model": "Eon Electric",
+        "seats": 5,
+        "top_speed": 398.0,
+        "year": 1979
+    },
+    {
+        "colour": "DarkGoldenRod",
+        "engine_size": 3.6,
+        "horsepower": 214,
+        "make": "Pulse",
+        "model": "EcoSphere",
+        "seats": 4,
+        "top_speed": 241.6,
+        "year": 1971
+    },
+    {
+        "colour": "Cyan",
+        "engine_size": 2.7,
+        "horsepower": 369,
+        "make": "Zenith Automotive",
+        "model": "Verde",
+        "seats": 8,
+        "top_speed": 294.6,
+        "year": 1971
+    },
+    {
+        "colour": "Sienna",
+        "engine_size": 1.3,
+        "horsepower": 220,
+        "make": "NovaAuto",
+        "model": "VivaCharge",
+        "seats": 2,
+        "top_speed": 221.0,
+        "year": 1978
+    },
+    {
+        "colour": "Gold",
+        "engine_size": 3.4,
+        "horsepower": 147,
+        "make": "Nostalgic Motors",
+        "model": "Ionica",
+        "seats": 7,
+        "top_speed": 212.8,
+        "year": 2002
+    },
+    {
+        "colour": "LightGray",
+        "engine_size": 4.9,
+        "horsepower": 505,
+        "make": "Exodus Cars",
+        "model": "Urbania",
+        "seats": 5,
+        "top_speed": 371.0,
+        "year": 1953
+    },
+    {
+        "colour": "Lime",
+        "engine_size": 2.7,
+        "horsepower": 187,
+        "make": "LuxeDrive",
+        "model": "MetroLink",
+        "seats": 4,
+        "top_speed": 221.8,
+        "year": 1959
+    },
+    {
+        "colour": "GhostWhite",
+        "engine_size": 4.5,
+        "horsepower": 601,
+        "make": "Eon Energy Cars",
+        "model": "Nimble",
+        "seats": 2,
+        "top_speed": 405.4,
+        "year": 1989
+    },
+    {
+        "colour": "Plum",
+        "engine_size": 1.9,
+        "horsepower": 610,
+        "make": "Voltura Automotive",
+        "model": "Pulse One",
+        "seats": 8,
+        "top_speed": 383.0,
+        "year": 1967
+    },
+    {
+        "colour": "MediumTurquoise",
+        "engine_size": 1.3,
+        "horsepower": 484,
+        "make": "Regalia Automobiles",
+        "model": "Swift",
+        "seats": 8,
+        "top_speed": 326.6,
+        "year": 1956
+    },
+    {
+        "colour": "SlateGray",
+        "engine_size": 4.1,
+        "horsepower": 138,
+        "make": "Celera",
+        "model": "Viva Mini",
+        "seats": 4,
+        "top_speed": 216.2,
+        "year": 1987
+    },
+    {
+        "colour": "YellowGreen",
+        "engine_size": 5.4,
+        "horsepower": 250,
+        "make": "GreenForce Motors",
+        "model": "CityZ",
+        "seats": 7,
+        "top_speed": 274.0,
+        "year": 1951
+    },
+    {
+        "colour": "MediumVioletRed",
+        "engine_size": 2.6,
+        "horsepower": 145,
+        "make": "EvoDrive",
+        "model": "Spry",
+        "seats": 2,
+        "top_speed": 204.0,
+        "year": 2010
+    },
+    {
+        "colour": "Teal",
+        "engine_size": 1.2,
+        "horsepower": 702,
+        "make": "Aurora Motors",
+        "model": "Pop",
+        "seats": 4,
+        "top_speed": 412.8,
+        "year": 1956
+    },
+    {
+        "colour": "SlateGray",
+        "engine_size": 3.3,
+        "horsepower": 561,
+        "make": "Aurora Motors",
+        "model": "Quickster",
+        "seats": 4,
+        "top_speed": 377.4,
+        "year": 1959
+    },
+    {
+        "colour": "PaleGoldenRod",
+        "engine_size": 4.3,
+        "horsepower": 538,
+        "make": "Aurora Motors",
+        "model": "Aether X1",
+        "seats": 7,
+        "top_speed": 378.2,
+        "year": 1980
+    },
+    {
+        "colour": "DarkGreen",
+        "engine_size": 1.9,
+        "horsepower": 267,
+        "make": "Eon Energy Cars",
+        "model": "Vortex Pro",
+        "seats": 5,
+        "top_speed": 245.8,
+        "year": 1952
+    },
+    {
+        "colour": "LightGoldenRodYellow",
+        "engine_size": 5.8,
+        "horsepower": 694,
+        "make": "HydraWorks",
+        "model": "NovaVolt",
+        "seats": 4,
+        "top_speed": 455.6,
+        "year": 1965
+    },
+    {
+        "colour": "ForestGreen",
+        "engine_size": 3.1,
+        "horsepower": 324,
+        "make": "Exodus Cars",
+        "model": "Eclipse LX",
+        "seats": 7,
+        "top_speed": 280.6,
+        "year": 1993
+    },
+    {
+        "colour": "GoldenRod",
+        "engine_size": 3.5,
+        "horsepower": 288,
+        "make": "Nostalgic Motors",
+        "model": "Stratos Prime",
+        "seats": 5,
+        "top_speed": 270.2,
+        "year": 2014
+    },
+    {
+        "colour": "Indigo",
+        "engine_size": 2.6,
+        "horsepower": 313,
+        "make": "Crestline",
+        "model": "Falcon X-7",
+        "seats": 2,
+        "top_speed": 271.2,
+        "year": 2023
+    },
+    {
+        "colour": "DarkGray",
+        "engine_size": 1.0,
+        "horsepower": 621,
+        "make": "Phoenix Motorsports",
+        "model": "Celesta One",
+        "seats": 7,
+        "top_speed": 378.4,
+        "year": 1969
+    },
+    {
+        "colour": "Lavender",
+        "engine_size": 3.1,
+        "horsepower": 190,
+        "make": "Trailblaze Automotive",
+        "model": "Radiant Edge",
+        "seats": 4,
+        "top_speed": 227.0,
+        "year": 2024
+    },
+    {
+        "colour": "Gold",
+        "engine_size": 1.3,
+        "horsepower": 252,
+        "make": "Crownline Classics",
+        "model": "Nebula S5",
+        "seats": 7,
+        "top_speed": 233.8,
+        "year": 2002
+    },
+    {
+        "colour": "Yellow",
+        "engine_size": 1.1,
+        "horsepower": 519,
+        "make": "TerraCruz",
+        "model": "Spectra Ultra",
+        "seats": 8,
+        "top_speed": 338.6,
+        "year": 1974
+    },
+    {
+        "colour": "White",
+        "engine_size": 3.2,
+        "horsepower": 127,
+        "make": "Veloce Dynamics",
+        "model": "Velocity GT",
+        "seats": 7,
+        "top_speed": 202.8,
+        "year": 2017
+    },
+    {
+        "colour": "LightSlateGray",
+        "engine_size": 4.5,
+        "horsepower": 411,
+        "make": "NovaAuto",
+        "model": "ThunderStrike",
+        "seats": 4,
+        "top_speed": 329.4,
+        "year": 1967
+    },
+    {
+        "colour": "LightYellow",
+        "engine_size": 1.5,
+        "horsepower": 622,
+        "make": "Astoria Automotive",
+        "model": "Tempest R",
+        "seats": 8,
+        "top_speed": 383.8,
+        "year": 1975
+    },
+    {
+        "colour": "MediumAquaMarine",
+        "engine_size": 2.7,
+        "horsepower": 223,
+        "make": "Celeste Automotive",
+        "model": "Phoenix XR",
+        "seats": 5,
+        "top_speed": 236.2,
+        "year": 1965
+    },
+    {
+        "colour": "Sienna",
+        "engine_size": 3.1,
+        "horsepower": 501,
+        "make": "Swiftline Motors",
+        "model": "Ignition Z",
+        "seats": 2,
+        "top_speed": 351.4,
+        "year": 2012
+    },
+    {
+        "colour": "CadetBlue",
+        "engine_size": 4.6,
+        "horsepower": 117,
+        "make": "Pulse",
+        "model": "TurboBlade",
+        "seats": 8,
+        "top_speed": 212.8,
+        "year": 1977
+    },
+    {
+        "colour": "MediumSlateBlue",
+        "engine_size": 4.7,
+        "horsepower": 698,
+        "make": "EvoDrive",
+        "model": "Raptor 500",
+        "seats": 7,
+        "top_speed": 446.2,
+        "year": 1973
+    },
+    {
+        "colour": "DarkGray",
+        "engine_size": 5.3,
+        "horsepower": 506,
+        "make": "Hyperion Speedworks",
+        "model": "Flashfire",
+        "seats": 2,
+        "top_speed": 375.4,
+        "year": 2013
+    },
+    {
+        "colour": "PowderBlue",
+        "engine_size": 1.8,
+        "horsepower": 533,
+        "make": "Cavalier Cars",
+        "model": "Cyclone SX",
+        "seats": 4,
+        "top_speed": 351.2,
+        "year": 2002
+    },
+    {
+        "colour": "Peru",
+        "engine_size": 4.2,
+        "horsepower": 665,
+        "make": "RidgeLine Motors",
+        "model": "EvoRacer",
+        "seats": 5,
+        "top_speed": 428.0,
+        "year": 2022
+    }
+]

@@ -1,7 +1,7 @@
 {
     "tasks": [
         {
-            "command": "docker-compose up api",
+            "command": "docker-compose --profile app up",
             "group": {
                 "kind": "none",
                 "isDefault": true
@@ -19,7 +19,25 @@
             "type": "shell"
         },
         {
-            "command": "docker-compose build",
+            "command": "docker-compose --profile app up --force-recreate -V",
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            },
+            "label": "Run (Clean)",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            },
+            "problemMatcher": [],
+            "type": "shell"
+        },
+        {
+            "command": "docker-compose --profile app build",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -36,12 +54,12 @@
             "type": "shell"
         },
         {
-            "command": "docker-compose --profile test up unit-test",
+            "command": "docker-compose --profile test up test",
             "group": {
                 "kind": "test",
                 "isDefault": true
             },
-            "label": "Unit Test",
+            "label": "Test",
             "options": {
                 "cwd": "${workspaceFolder}/build"
             },

@@ -1,0 +1,289 @@
+[
+    {
+        "manufacturer": "Manufacturer of the spaceship.",
+        "max_crew": "Maximum crew capacity.",
+        "model": "Model name of the spaceship.",
+        "top_speed": "Top speed as a fraction of light speed.",
+        "year": "Year the spaceship was manufactured."
+    },
+    {
+        "manufacturer": "Titan Galactic",
+        "max_crew": 400,
+        "model": "Star Wanderer",
+        "top_speed": 0.7098,
+        "year": 2021
+    },
+    {
+        "manufacturer": "Pulsar Ventures",
+        "max_crew": 50,
+        "model": "Celestial Voyager",
+        "top_speed": 0.20821,
+        "year": 2004
+    },
+    {
+        "manufacturer": "Stellar Elegance",
+        "max_crew": 100,
+        "model": "Galactic Horizon",
+        "top_speed": 0.76554,
+        "year": 2004
+    },
+    {
+        "manufacturer": "Hyperion Aerospace",
+        "max_crew": 400,
+        "model": "Nova Pursuer",
+        "top_speed": 0.22462,
+        "year": 2023
+    },
+    {
+        "manufacturer": "Lunar Horizon Works",
+        "max_crew": 50,
+        "model": "Solar Flare",
+        "top_speed": 0.2325,
+        "year": 2007
+    },
+    {
+        "manufacturer": "AeonDrive Industries",
+        "max_crew": 50,
+        "model": "Stardust Seeker",
+        "top_speed": 0.11487,
+        "year": 2013
+    },
+    {
+        "manufacturer": "Vanguard Forge",
+        "max_crew": 1,
+        "model": "Nebula Rider",
+        "top_speed": 0.58419,
+        "year": 2002
+    },
+    {
+        "manufacturer": "AstroTech Systems",
+        "max_crew": 2,
+        "model": "Celestial Dawn",
+        "top_speed": 0.56278,
+        "year": 2018
+    },
+    {
+        "manufacturer": "AetherForge",
+        "max_crew": 400,
+        "model": "Galaxion",
+        "top_speed": 0.7879,
+        "year": 2022
+    },
+    {
+        "manufacturer": "Defender Dynamics",
+        "max_crew": 8000,
+        "model": "Infinity's Edge",
+        "top_speed": 0.83108,
+        "year": 2008
+    },
+    {
+        "manufacturer": "StellarCraft Labs",
+        "max_crew": 100,
+        "model": "Quantum Whisper",
+        "top_speed": 0.6177,
+        "year": 2005
+    },
+    {
+        "manufacturer": "Seraphim Galactic",
+        "max_crew": 100,
+        "model": "Nebula Nexus",
+        "top_speed": 0.37434,
+        "year": 2014
+    },
+    {
+        "manufacturer": "NebulaWorks",
+        "max_crew": 8000,
+        "model": "Omega Strider",
+        "top_speed": 0.3241,
+        "year": 2013
+    },
+    {
+        "manufacturer": "Eclipse & Co.",
+        "max_crew": 8000,
+        "model": "Chrono Ascendant",
+        "top_speed": 0.56656,
+        "year": 2003
+    },
+    {
+        "manufacturer": "HyperNova Dynamics",
+        "max_crew": 100,
+        "model": "Infinity Pulse",
+        "top_speed": 0.21229,
+        "year": 2011
+    },
+    {
+        "manufacturer": "Starlight Systems",
+        "max_crew": 100,
+        "model": "Spectral Enigma",
+        "top_speed": 0.95166,
+        "year": 2007
+    },
+    {
+        "manufacturer": "StarGuard Heavy Industries",
+        "max_crew": 2,
+        "model": "Eon Drive",
+        "top_speed": 0.00894,
+        "year": 2022
+    },
+    {
+        "manufacturer": "Galactix Industries",
+        "max_crew": 400,
+        "model": "Zyron",
+        "top_speed": 0.40532,
+        "year": 2011
+    },
+    {
+        "manufacturer": "Dreamcatcher Systems",
+        "max_crew": 1,
+        "model": "Photon Voyager",
+        "top_speed": 0.3214,
+        "year": 2008
+    },
+    {
+        "manufacturer": "Cosmos Whisper Labs",
+        "max_crew": 10,
+        "model": "Nova Protocol",
+        "top_speed": 0.63525,
+        "year": 2003
+    },
+    {
+        "manufacturer": "AstralCraft Collective",
+        "max_crew": 8000,
+        "model": "Astral Vortex",
+        "top_speed": 0.01225,
+        "year": 2019
+    },
+    {
+        "manufacturer": "Vanguard Forge",
+        "max_crew": 10,
+        "model": "Orion's Blade",
+        "top_speed": 0.01637,
+        "year": 2019
+    },
+    {
+        "manufacturer": "NebulaWorks",
+        "max_crew": 50,
+        "model": "Starbreaker",
+        "top_speed": 0.46729,
+        "year": 2020
+    },
+    {
+        "manufacturer": "AetherForge",
+        "max_crew": 50,
+        "model": "Eclipse Raider",
+        "top_speed": 0.30835,
+        "year": 2008
+    },
+    {
+        "manufacturer": "Nimbus Technologies",
+        "max_crew": 2,
+        "model": "Luminous Falcon",
+        "top_speed": 0.21409,
+        "year": 2009
+    },
+    {
+        "manufacturer": "Defender Dynamics",
+        "max_crew": 1,
+        "model": "Celestial Avenger",
+        "top_speed": 0.88768,
+        "year": 2004
+    },
+    {
+        "manufacturer": "Sentinel Spaceworks",
+        "max_crew": 400,
+        "model": "Solar Mirage",
+        "top_speed": 0.56433,
+        "year": 2000
+    },
+    {
+        "manufacturer": "PrimeStar Works",
+        "max_crew": 1,
+        "model": "Void Saber",
+        "top_speed": 0.15363,
+        "year": 2009
+    },
+    {
+        "manufacturer": "NovaForge",
+        "max_crew": 2,
+        "model": "Dawn\u2019s Crusader",
+        "top_speed": 0.69215,
+        "year": 2018
+    },
+    {
+        "manufacturer": "Celestial Innovations",
+        "max_crew": 10,
+        "model": "Cosmic Hunter",
+        "top_speed": 0.85943,
+        "year": 2019
+    },
+    {
+        "manufacturer": "NovaForge",
+        "max_crew": 100,
+        "model": "Aether Drift",
+        "top_speed": 0.53658,
+        "year": 2003
+    },
+    {
+        "manufacturer": "Voidcraft Enterprises",
+        "max_crew": 10,
+        "model": "Starlit Phantom",
+        "top_speed": 0.12481,
+        "year": 2015
+    },
+    {
+        "manufacturer": "Onyx Defense Industries",
+        "max_crew": 10,
+        "model": "Celestial Mirage",
+        "top_speed": 0.96706,
+        "year": 2020
+    },
+    {
+        "manufacturer": "Stellar Elegance",
+        "max_crew": 10,
+        "model": "Cosmos Dreamer",
+        "top_speed": 0.47485,
+        "year": 2014
+    },
+    {
+        "manufacturer": "Dreamcatcher Systems",
+        "max_crew": 10,
+        "model": "Silent Comet",
+        "top_speed": 0.95572,
+        "year": 2006
+    },
+    {
+        "manufacturer": "Radiant Edge",
+        "max_crew": 10,
+        "model": "Eclipse Shadow",
+        "top_speed": 0.8177,
+        "year": 2016
+    },
+    {
+        "manufacturer": "Dreamcatcher Systems",
+        "max_crew": 50,
+        "model": "Eventide Nomad",
+        "top_speed": 0.91707,
+        "year": 2014
+    },
+    {
+        "manufacturer": "Celestial Path Foundry",
+        "max_crew": 8000,
+        "model": "Nebula Wraith",
+        "top_speed": 0.41758,
+        "year": 2007
+    },
+    {
+        "manufacturer": "Dreamcatcher Systems",
+        "max_crew": 10,
+        "model": "Specter Horizon",
+        "top_speed": 0.39286,
+        "year": 2010
+    },
+    {
+        "manufacturer": "Quantum Dynamics",
+        "max_crew": 8000,
+        "model": "Luna's Echo",
+        "top_speed": 0.26686,
+        "year": 2012
+    }
+]
