@@ -1,6 +1,6 @@
-import logging
 import flask
 
+from typing import Optional
 from json import loads
 from flask_restx import Namespace, Resource
 from http.client import responses
@@ -9,12 +9,38 @@ from apis.namespaces.v1.models.requests import get_query_parser
 from apis.namespaces.v1.models.responses import get_query_result, get_validation_result
 from dal.models.facts import Spaceship
 from dal.mysql import MySQLDal
+from helpers.parsing_helper import parse
 
 api = Namespace("vehicles", "Vehicles", path="/vehicles")
 
-query_description = """# Examples
+shared_description = """
+## Supported Functionality
 
-Query all models that equal `Stardust Seeker`:
+### Operators
+
+- AND
+- OR
+
+### Constraints
+
+- equals
+- notEquals
+- startsWith
+- endsWith
+- contains
+- notContains
+- lt (Less than)
+- lte (Less than or equal to)
+- gt (Greater than)
+- gte (Greater than or equal to)
+- in
+- notIn
+
+"""
+spaceship_query_description = (
+    """# Examples
+
+Query all Spaceships that have a `model` equaling `Stardust Seeker`:
 
 ```
 {
@@ -30,7 +56,7 @@ Query all models that equal `Stardust Seeker`:
 }
 ```
 
-Query all models that equal `Nebula Rider` or `Stardust Seeker`:
+Query all Spaceships who's models equals `Nebula Rider` or `Stardust Seeker`:
 
 ```
 {
@@ -50,7 +76,7 @@ Query all models that equal `Nebula Rider` or `Stardust Seeker`:
 }
 ```
 
-Query vehicles that have a Manufacturer of `AetherForge` after year `2010`:
+Query Spaceships that have a Manufacturer of `AetherForge` after year `2010`:
 
 ```
 {
@@ -75,30 +101,9 @@ Query vehicles that have a Manufacturer of `AetherForge` after year `2010`:
 }
 ```
 
-## Supported Functionality
-
-### Operators
-
-Defaults to AND
-- AND
-- OR
-
-### Constraints
-
-- equals
-- notEquals
-- startsWith
-- endsWith
-- contains
-- notContains
-- lt (Less than)
-- lte (Less than or equal to)
-- gt (Greater than)
-- gte (Greater than or equal to)
-- in
-- notIn
-
 """
+    + shared_description
+)
 
 
 query_parser = get_query_parser(api)
@@ -108,7 +113,7 @@ spaceship_model = Spaceship.get_swagger_model(api)
 dal = MySQLDal()
 
 
-@api.doc(description=query_description)
+@api.doc(description=spaceship_query_description)
 @api.route("/spaceships")
 @api.response(200, responses[200], model=spaceship_model)
 @api.response(500, responses[500])
@@ -120,20 +125,16 @@ class SpaceshipsResource(Resource):
         model=get_query_result(api, Spaceship.__name__, spaceship_model),
     )
     @api.response(400, responses[400], model=get_validation_result(api))
-    def get(self):
+    @parse.query_request(query_parser)
+    def get(
+        self,
+        sort_field: Optional[str],
+        sort_order: Optional[str],
+        query: Optional[dict],
+    ):
         """
-        Query Spaceships
+        Query Spaceship Vehicles
         """
 
-        args = query_parser.parse_args()
-        query = {}
-        if args.query:
-            try:
-                query = loads(args.query)
-
-            except (ValueError, TypeError):
-                logging.exception("Unable to parse query")
-                return flask.make_response({"error": "Invalid query supplied!"}, 400)
-
-        results = dal.query(Spaceship, query, args.sort_field, args.sort_order)
+        results = dal.query(Spaceship, query, sort_field, sort_order)
         return flask.make_response({"results": results, "count": len(results)})
