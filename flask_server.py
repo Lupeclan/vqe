@@ -31,9 +31,11 @@ dictConfig(
 app = Flask(__name__)
 app.register_blueprint(ns_v1)
 
+dal: MySQLDal
+
 try:
-    mysql = MySQLDal()
-    mysql.scaffold()
+    dal = MySQLDal()
+    dal.scaffold()
 except Exception:
     logging.exception("Unable to scaffold database!")
     exit(1)
