@@ -23,7 +23,13 @@ class Parse:
                     parsed_query = parse_json_string(parsed.query)
                     if not parsed_query:
                         return flask.make_response(
-                            {"error": "Invalid query supplied!"}, 400
+                            {
+                                "errors": {
+                                    "query": "Invalid query supplied, see Examples for query payload."
+                                },
+                                "message": "Input payload validation failed",
+                            },
+                            400,
                         )
 
                 return func(

@@ -6,10 +6,15 @@ from flask_restx import Namespace, Resource
 from http.client import responses
 
 from apis.namespaces.v1.models.requests import get_query_parser
-from apis.namespaces.v1.models.responses import get_query_result, get_validation_result
+from apis.namespaces.v1.models.responses import (
+    get_query_result,
+    get_validation_result,
+    get_unhandled_error,
+)
 from dal.models.facts import Spaceship
 from dal.mysql import MySQLDal
 from helpers.parsing_helper import parse
+from helpers.validation_helper import validate
 
 api = Namespace("vehicles", "Vehicles", path="/vehicles")
 
@@ -108,6 +113,7 @@ Query Spaceships that have a Manufacturer of `AetherForge` after year `2010`:
 
 query_parser = get_query_parser(api)
 
+error_model = get_unhandled_error(api)
 spaceship_model = Spaceship.get_swagger_model(api)
 
 dal = MySQLDal()
@@ -116,7 +122,7 @@ dal = MySQLDal()
 @api.doc(description=spaceship_query_description)
 @api.route("/spaceships")
 @api.response(200, responses[200], model=spaceship_model)
-@api.response(500, responses[500])
+@api.response(500, responses[500], model=error_model)
 class SpaceshipsResource(Resource):
     @api.expect(query_parser)
     @api.response(
@@ -126,6 +132,7 @@ class SpaceshipsResource(Resource):
     )
     @api.response(400, responses[400], model=get_validation_result(api))
     @parse.query_request(query_parser)
+    @validate.sort_field_exists(Spaceship.query_columns)
     def get(
         self,
         sort_field: Optional[str],
@@ -135,6 +142,5 @@ class SpaceshipsResource(Resource):
         """
         Query Spaceship Vehicles
         """
-
         results = dal.query(Spaceship, query, sort_field, sort_order)
         return flask.make_response({"results": results, "count": len(results)})

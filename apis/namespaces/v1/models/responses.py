@@ -20,9 +20,25 @@ def get_validation_result(api):
     return api.model(
         "ValidationResult",
         {
-            "error": fields.String(
-                "Invalid query supplied!",
+            "errors": fields.Wildcard(
+                fields.String(),
+                description="Dictionary of the parameter name and it's validation error.",
+            ),
+            "message": fields.String(
+                "Input payload validation failed",
                 description="Description of the error in the payload.",
+            ),
+        },
+    )
+
+
+def get_unhandled_error(api):
+    return api.model(
+        "ErrorResult",
+        {
+            "message": fields.String(
+                "Internal Server Error!",
+                description="Details about the server error.",
             )
         },
     )

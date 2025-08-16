@@ -5,6 +5,7 @@ class Manufacturer(Base):
     table_name: str = "dim_manufacturers"
     alias: str = "manu"
     primary_key: str = "manufacturer_id"
+    query_columns: list[str] = ["manufacturer"]
 
     @classmethod
     def get_create_table(cls) -> str:
@@ -25,6 +26,7 @@ class Model(Base):
     table_name: str = "dim_models"
     alias: str = "mdl"
     primary_key: str = "model_id"
+    query_columns: list[str] = ["model"]
 
     @classmethod
     def get_create_table(cls) -> str:
