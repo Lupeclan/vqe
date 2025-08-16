@@ -6,18 +6,15 @@ class Car(Base):
     table_name: str = "fact_vehicle_cars"
     alias: str = "vhlc"
     primary_key: str = "car_id"
-    query_columns: list[str] = (
-        [
-            "colour",
-            "engine_size",
-            "horsepower",
-            "seats",
-            "top_speed",
-            "year",
-        ]
-        + Manufacturer.query_columns
-        + Model.query_columns
-    )
+    query_columns: list[str] = [
+        "colour",
+        "engine_size",
+        "horsepower",
+        "seats",
+        "top_speed",
+        "year",
+    ]
+    column_map: dict[str, str] = {"make": "manufacturer"}
 
     @classmethod
     def get_create_table(cls) -> str:
@@ -87,16 +84,13 @@ class Bike(Base):
     table_name: str = "fact_vehicle_bikes"
     alias: str = "vhlb"
     primary_key: str = "bike_id"
-    query_columns: list[str] = (
-        [
-            "gears",
-            "type",
-            "wheel_size",
-            "year",
-        ]
-        + Manufacturer.query_columns
-        + Model.query_columns
-    )
+    query_columns: list[str] = [
+        "gears",
+        "type",
+        "wheel_size",
+        "year",
+    ]
+    column_map: dict[str, str] = {"brand": "manufacturer"}
 
     @classmethod
     def get_create_table(cls) -> str:
@@ -162,15 +156,12 @@ class Spaceship(Base):
     table_name: str = "fact_vehicle_spaceships"
     alias: str = "vhls"
     primary_key: str = "spaceship_id"
-    query_columns: list[str] = (
-        [
-            "max_crew",
-            "top_speed",
-            "year",
-        ]
-        + Manufacturer.query_columns
-        + Model.query_columns
-    )
+    query_columns: list[str] = [
+        "max_crew",
+        "top_speed",
+        "year",
+    ]
+    column_map: dict[str, str] = {"manufacturer": "manufacturer"}
 
     @classmethod
     def get_create_table(cls) -> str:

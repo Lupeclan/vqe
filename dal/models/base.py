@@ -6,6 +6,7 @@ class Base:
     alias: str
     primary_key: str
     query_columns: list[str]
+    column_map: dict[str, str]
 
     @classmethod
     @abstractmethod

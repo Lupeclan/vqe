@@ -180,7 +180,7 @@ class MySQLDal:
         query_string = f"""
             SELECT
                 `{columns}`,
-                {Manufacturer.alias}.`manufacturer`,
+                {Manufacturer.alias}.`manufacturer` AS {[c for c, v in cls.column_map.items() if v == 'manufacturer'][0]!r},
                 {Model.alias}.`model`
             FROM `{self.db_name}`.`{cls.table_name}` {cls.alias}
             JOIN `{self.db_name}`.`{Manufacturer.table_name}` {Manufacturer.alias}
@@ -201,42 +201,47 @@ class MySQLDal:
                 ):
                     continue
 
+                col = (
+                    cls.column_map[column_name]
+                    if column_name in cls.column_map
+                    else column_name
+                )
                 op = column_value["operator"]
                 i = 0
                 inner_parts = []
                 for constraint in column_value["constraints"]:
                     value = constraint["value"]
-                    param = f":arg_{column_name}_{i}"
+                    param = f":arg_{col}_{i}"
                     if constraint["operator"] == "equals":
-                        inner_parts.append(f"`{column_name}` = {param}")
+                        inner_parts.append(f"`{col}` = {param}")
                     elif constraint["operator"] == "notEquals":
-                        inner_parts.append(f"`{column_name}` != {param}")
+                        inner_parts.append(f"`{col}` != {param}")
                     elif constraint["operator"] == "startsWith":
-                        inner_parts.append(f"`{column_name}` LIKE {param}")
+                        inner_parts.append(f"`{col}` LIKE {param}")
                         value = f"{constraint['value']}%"
                     elif constraint["operator"] == "endsWith":
-                        inner_parts.append(f"`{column_name}` LIKE {param}")
+                        inner_parts.append(f"`{col}` LIKE {param}")
                         value = f"%{constraint['value']}"
                     elif constraint["operator"] == "contains":
-                        inner_parts.append(f"`{column_name}` LIKE {param}")
+                        inner_parts.append(f"`{col}` LIKE {param}")
                         value = f"%{constraint['value']}%"
                     elif constraint["operator"] == "notContains":
-                        inner_parts.append(f"`{column_name}` NOT LIKE {param}")
+                        inner_parts.append(f"`{col}` NOT LIKE {param}")
                         value = f"%{constraint['value']}%"
                     elif constraint["operator"] == "lt":
-                        inner_parts.append(f"`{column_name}` < {param}")
+                        inner_parts.append(f"`{col}` < {param}")
                     elif constraint["operator"] == "lte":
-                        inner_parts.append(f"`{column_name}` <= {param}")
+                        inner_parts.append(f"`{col}` <= {param}")
                     elif constraint["operator"] == "gt":
-                        inner_parts.append(f"`{column_name}` > {param}")
+                        inner_parts.append(f"`{col}` > {param}")
                     elif constraint["operator"] == "gte":
-                        inner_parts.append(f"`{column_name}` >= {param}")
+                        inner_parts.append(f"`{col}` >= {param}")
                     elif constraint["operator"] == "in":
-                        inner_parts.append(f"`{column_name}` IN {param}")
+                        inner_parts.append(f"`{col}` IN {param}")
                         if type(value) is not list:
                             value = [value]
                     elif constraint["operator"] == "notIn":
-                        inner_parts.append(f"`{column_name}` NOT IN {param}")
+                        inner_parts.append(f"`{col}` NOT IN {param}")
                         if type(value) is not list:
                             value = [value]
                     params[param[1:]] = value
