@@ -209,8 +209,36 @@ class MySQLDal:
                     param = f":arg_{column_name}_{i}"
                     if constraint["operator"] == "equals":
                         inner_parts.append(f"`{column_name}` = {param}")
+                    elif constraint["operator"] == "notEquals":
+                        inner_parts.append(f"`{column_name}` != {param}")
+                    elif constraint["operator"] == "startsWith":
+                        inner_parts.append(f"`{column_name}` LIKE {param}")
+                        value = f"{constraint['value']}%"
+                    elif constraint["operator"] == "endsWith":
+                        inner_parts.append(f"`{column_name}` LIKE {param}")
+                        value = f"%{constraint['value']}"
+                    elif constraint["operator"] == "contains":
+                        inner_parts.append(f"`{column_name}` LIKE {param}")
+                        value = f"%{constraint['value']}%"
+                    elif constraint["operator"] == "notContains":
+                        inner_parts.append(f"`{column_name}` NOT LIKE {param}")
+                        value = f"%{constraint['value']}%"
+                    elif constraint["operator"] == "lt":
+                        inner_parts.append(f"`{column_name}` < {param}")
+                    elif constraint["operator"] == "lte":
+                        inner_parts.append(f"`{column_name}` <= {param}")
                     elif constraint["operator"] == "gt":
                         inner_parts.append(f"`{column_name}` > {param}")
+                    elif constraint["operator"] == "gte":
+                        inner_parts.append(f"`{column_name}` >= {param}")
+                    elif constraint["operator"] == "in":
+                        inner_parts.append(f"`{column_name}` IN {param}")
+                        if type(value) is not list:
+                            value = [value]
+                    elif constraint["operator"] == "notIn":
+                        inner_parts.append(f"`{column_name}` NOT IN {param}")
+                        if type(value) is not list:
+                            value = [value]
                     params[param[1:]] = value
                     i += 1
 

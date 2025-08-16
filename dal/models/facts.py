@@ -60,6 +60,28 @@ class Car(Base):
         ENGINE = INNODB
         AUTO_INCREMENT = 0;"""
 
+    @classmethod
+    def get_swagger_model(cls, api):
+        from flask_restx import fields
+
+        return api.model(
+            cls.__name__,
+            {
+                "colour": fields.String("SteelBlue", description="Color of the car."),
+                "engine_size": fields.Float(4.8, description="Color of the car."),
+                "horsepower": fields.Integer(214, description="Engine horsepower."),
+                "make": fields.String(
+                    "Astoria Automotive", description="Manufacturer of the car."
+                ),
+                "model": fields.String("EcoNova", description="Model name of the car."),
+                "seats": fields.Integer(5, description="Number of seats."),
+                "top_speed": fields.Float(253.6, description="Maximum speed in km/h."),
+                "year": fields.Integer(
+                    2025, description="Year the car was manufactured."
+                ),
+            },
+        )
+
 
 class Bike(Base):
     table_name: str = "fact_vehicle_bikes"
@@ -110,6 +132,30 @@ class Bike(Base):
         )
         ENGINE = INNODB
         AUTO_INCREMENT = 0;"""
+
+    @classmethod
+    def get_swagger_model(cls, api):
+        from flask_restx import fields
+
+        return api.model(
+            cls.__name__,
+            {
+                "brand": fields.String(
+                    "EraCraft", description="Manufacturer of the bicycle."
+                ),
+                "gears": fields.Integer(3, description="Number of gears."),
+                "model": fields.String(
+                    "Urbanite", description="Model name of the bicycle."
+                ),
+                "type": fields.String("Road", description="Type of bicycle."),
+                "wheel_size": fields.Integer(
+                    29, description="Wheel diameter in inches."
+                ),
+                "year": fields.Integer(
+                    2014, description="Year the bicycle was manufactured."
+                ),
+            },
+        )
 
 
 class Spaceship(Base):
@@ -172,7 +218,7 @@ class Spaceship(Base):
                 "model": fields.String(
                     "Star Wanderer", description="Model name of the spaceship."
                 ),
-                "top_speed": fields.String(
+                "top_speed": fields.Float(
                     0.7098, description="Top speed as a fraction of light speed."
                 ),
                 "year": fields.Integer(
