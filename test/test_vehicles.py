@@ -16,7 +16,23 @@ class VehiclesTest(unittest.TestCase):
         )
 
         self.assertEqual("400 BAD REQUEST", response.status)
-        self.assertEqual(b'{"error":"Invalid query supplied!"}\n', response.data)
+        self.assertEqual(
+            b'{"errors":{"query":"Invalid query supplied, see Examples for query payload."},"message":"Input payload validation failed."}\n',
+            response.data,
+        )
+        self.assertEqual("application/json", response.mimetype)
+
+    def test_spaceships_not_present_sort_field(self) -> None:
+        response = self.client.get(
+            "/api/v1/vehicles/spaceships",
+            query_string="sort_field=generation",
+        )
+
+        self.assertEqual("400 BAD REQUEST", response.status)
+        self.assertEqual(
+            b'{"errors":{"sort_field":"Sort field `generation` was not in available list of columns."},"message":"Input payload validation failed."}\n',
+            response.data,
+        )
         self.assertEqual("application/json", response.mimetype)
 
     def test_spaceships_all_results(self) -> None:

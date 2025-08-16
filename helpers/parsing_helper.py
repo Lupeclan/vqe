@@ -27,7 +27,7 @@ class Parse:
                                 "errors": {
                                     "query": "Invalid query supplied, see Examples for query payload."
                                 },
-                                "message": "Input payload validation failed",
+                                "message": "Input payload validation failed.",
                             },
                             400,
                         )

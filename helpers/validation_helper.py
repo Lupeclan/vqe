@@ -22,7 +22,10 @@ class Validate:
                 ):
                     return flask.make_response(
                         {
-                            "error": f"Sort field `{kwargs['sort_field']}` was not in available list of columns!"
+                            "errors": {
+                                "sort_field": f"Sort field `{kwargs['sort_field']}` was not in available list of columns."
+                            },
+                            "message": "Input payload validation failed.",
                         },
                         400,
                     )
