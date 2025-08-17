@@ -49,6 +49,8 @@ services:
       - "python3"
       - "-m"
       - "pytest"
+      - "-W"
+      - "ignore::DeprecationWarning"
       - "test/."
     volumes:
       - ../:/app
