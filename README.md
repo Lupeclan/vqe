@@ -22,23 +22,24 @@
 
 ## Setup
 
-*All paths are assumed to be relative to the repository*
-
 ### Build
 
 1. Clone the repository locally: `git clone git@github.com:Lupeclan/vqe.git`
-2. Navigate to the cloned repositories build folder: `cd build`
-3. Run a docker-compose build: `docker-compose build`
+2. Navigate to the cloned repositories build folder: `cd vqe/build`
+3. Run a docker-compose build: `docker-compose --profile app build`
 
 ### Running
 
+*All paths are assumed to be relative to the repository*
+
 1. Ensure that all steps under [Build](#build) are complete.
-2. Navigate to the build folder: `cd build`
+2. Ensure that you are in the build folder: `cd build`
 3. Run the services via docker-compose: `docker-compose --profile app up`
     - To run with a clean DB (New containers): `docker-compose --profile app up --force-recreate -V`
 4. Navigate to `/ping` endpoint to test connectivity:
     - http://127.0.0.1:8080/ping
     - http://localhost:8080/ping
+5. Validate that you receive a result of `PONG`
 
 ### Interacting with the VQE
 
@@ -48,7 +49,7 @@
     - http://localhost:8080/
     - http://127.0.0.1:8080/api/v1
     - http://localhost:8080/api/v1
-2. Expand `vehicles` tab to view endpoints
+2. Expand `vehicles` tab to view available endpoints
     1. Expand `/vehicles/bikes` to interact with Bikes endpoint
     2. Expand `/vehicles/cars` to interact with Cars endpoint
     3. Expand `/vehicles/spaceships` to interact with Spaceships endpoint
