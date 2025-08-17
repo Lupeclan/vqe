@@ -117,6 +117,13 @@ Query Spaceships that have a `manufacturer` of `AetherForge` after year `2010`:
 )
 
 
+def build_response(results: Optional[list[dict]]):
+    if results:
+        return flask.make_response({"results": results, "count": len(results)})
+
+    return flask.make_response({"results": [], "count": 0})
+
+
 spaceship_model = Spaceship.get_swagger_model(api)
 
 
@@ -145,8 +152,7 @@ class SpaceshipsResource(Resource):
         """
         Query Spaceship Vehicles
         """
-        results = dal.query(Spaceship, query, sort_field, sort_order)
-        return flask.make_response({"results": results, "count": len(results)})
+        return build_response(dal.query(Spaceship, query, sort_field, sort_order))
 
 
 car_query_description = (
@@ -248,8 +254,7 @@ class CarsResource(Resource):
         """
         Query Car Vehicles
         """
-        results = dal.query(Car, query, sort_field, sort_order)
-        return flask.make_response({"results": results, "count": len(results)})
+        return build_response(dal.query(Car, query, sort_field, sort_order))
 
 
 bike_query_description = (
@@ -328,5 +333,4 @@ class BikesResource(Resource):
         """
         Query Bike Vehicles
         """
-        results = dal.query(Bike, query, sort_field, sort_order)
-        return flask.make_response({"results": results, "count": len(results)})
+        return build_response(dal.query(Bike, query, sort_field, sort_order))
