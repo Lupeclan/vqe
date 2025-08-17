@@ -232,7 +232,7 @@ class CarsResource(Resource):
     @api.response(
         200,
         responses[200],
-        model=get_query_result(api, Car.__name__, spaceship_model),
+        model=get_query_result(api, Car.__name__, car_model),
     )
     @api.response(400, responses[400], model=get_validation_result(api))
     @parse.query_request(query_parser)
