@@ -250,3 +250,83 @@ class CarsResource(Resource):
         """
         results = dal.query(Car, query, sort_field, sort_order)
         return flask.make_response({"results": results, "count": len(results)})
+
+
+bike_query_description = (
+    """# Examples
+
+Query Bikes that have a `gears` greater than `3`, a `type` that is not `BMX` or `Road`:
+
+```
+{
+    \"gears\": {
+        \"operator\": \"and\",
+        \"constraints\": [
+            {
+                \"operator\": \"gt\",
+                \"value\": 3
+            }
+        ]
+    },
+    \"type\": {
+        \"operator\": \"and\",
+        \"constraints\": [
+            {
+                \"operator\": \"notIn\",
+                \"value\": [
+                    "BMX",
+                    "Road"
+                ]
+            }
+        ]
+    },
+    \"year\": {
+        \"operator\": \"or\",
+        \"constraints\": [
+            {
+                \"operator\": \"equals\",
+                \"value\": 2023
+            },
+            {
+                \"operator\": \"equals\",
+                \"value\": 2014
+            }
+        ]
+    }
+}
+```
+
+"""
+    + shared_description
+)
+
+bike_model = Bike.get_swagger_model(api)
+
+
+@api.doc(description=bike_query_description)
+@api.route("/bikes")
+@api.response(200, responses[200], model=bike_model)
+@api.response(500, responses[500], model=error_model)
+class BikesResource(Resource):
+    @api.expect(query_parser)
+    @api.response(
+        200,
+        responses[200],
+        model=get_query_result(api, Bike.__name__, bike_model),
+    )
+    @api.response(400, responses[400], model=get_validation_result(api))
+    @parse.query_request(query_parser)
+    @validate.sort_field_exists(
+        Bike.query_columns + Manufacturer.query_columns + Model.query_columns
+    )
+    def get(
+        self,
+        sort_field: Optional[str],
+        sort_order: Optional[str],
+        query: Optional[dict],
+    ):
+        """
+        Query Bike Vehicles
+        """
+        results = dal.query(Bike, query, sort_field, sort_order)
+        return flask.make_response({"results": results, "count": len(results)})

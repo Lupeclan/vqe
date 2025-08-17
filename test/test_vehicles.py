@@ -1,17 +1,24 @@
 import unittest
 
+from ddt import ddt, data
 from flask_server import app
 
 
+@ddt
 class VehiclesTest(unittest.TestCase):
     def setUp(self) -> None:
         self.client = app.test_client()
 
         return super().setUp()
 
-    def test_spaceships_invalid_query_json(self) -> None:
+    @data(
+        "/api/v1/vehicles/spaceships",
+        "/api/v1/vehicles/cars",
+        "/api/v1/vehicles/bikes",
+    )
+    def test_invalid_query_json(self, path: str) -> None:
         response = self.client.get(
-            "/api/v1/vehicles/spaceships",
+            path,
             query_string='query={"model":{"operator":"and"}',
         )
 
@@ -22,9 +29,14 @@ class VehiclesTest(unittest.TestCase):
         )
         self.assertEqual("application/json", response.mimetype)
 
-    def test_spaceships_not_present_sort_field(self) -> None:
+    @data(
+        "/api/v1/vehicles/spaceships",
+        "/api/v1/vehicles/cars",
+        "/api/v1/vehicles/bikes",
+    )
+    def test_not_present_sort_field(self, path: str) -> None:
         response = self.client.get(
-            "/api/v1/vehicles/spaceships",
+            path,
             query_string="sort_field=generation",
         )
 
@@ -35,8 +47,13 @@ class VehiclesTest(unittest.TestCase):
         )
         self.assertEqual("application/json", response.mimetype)
 
-    def test_spaceships_all_results(self) -> None:
-        response = self.client.get("/api/v1/vehicles/spaceships")
+    @data(
+        "/api/v1/vehicles/spaceships",
+        "/api/v1/vehicles/cars",
+        "/api/v1/vehicles/bikes",
+    )
+    def test_all_results(self, path: str) -> None:
+        response = self.client.get(path)
 
         self.assertEqual("200 OK", response.status, response.data)
         self.assertEqual("application/json", response.mimetype)
