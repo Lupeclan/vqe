@@ -18,13 +18,13 @@
     - Used to build and run application
 - [docker-compose](https://docs.docker.com/compose/install/)
     - Version `2.31.0` or greater
-    - Used to orchestrate multiple services, API, Redis, DB
+    - Used to orchestrate multiple services; API, DB
 
 ## Setup
 
 ### Build
 
-1. Clone the repository locally
+1. Clone the repository locally: `git clone git@github.com:Lupeclan/vqe.git`
 2. Navigate to the cloned repositories build folder: `cd vqe/build`
 3. Run a docker-compose build: `docker-compose build`
 
@@ -36,3 +36,14 @@
 3. Navigate to `/ping` endpoint to test connectivity:
     - http://127.0.0.1:8080/ping
     - http://localhost:8080/ping
+
+### Interacting with the VQE
+
+1. Navigate to `/` or `/api/v1` to interact with Swagger documentation
+    - http://127.0.0.1:8080/
+    - http://localhost:8080/api/v1
+2. Expand `vehicles` tab to view endpoints
+    1. Expand `/vehicles/bikes` to interact with Bikes endpoint
+    2. Expand `/vehicles/cars` to interact with Cars endpoint
+    3. Expand `/vehicles/spaceships` to interact with Spaceships endpoint
+3. Expand `Models` to view API response models
