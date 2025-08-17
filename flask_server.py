@@ -1,6 +1,7 @@
 import logging
 
 from os import environ
+from datetime import datetime, timezone
 from logging.config import dictConfig
 
 from flask import Flask, Response, redirect
@@ -39,6 +40,14 @@ try:
 except Exception:
     logging.exception("Unable to scaffold database!")
     exit(1)
+
+
+@app.after_request
+def add_header(response):
+    response.headers["Cache-Control"] = "public, max-age=3600"
+    response.headers["X-Generated-At-UTC"] = datetime.now(timezone.utc)
+    return response
+
 
 
 @app.route("/ping")

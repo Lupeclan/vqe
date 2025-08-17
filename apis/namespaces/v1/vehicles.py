@@ -181,7 +181,7 @@ Query all Cars who's `colour` starts with `Light` and contains `Y`:
             },
             {
                 \"operator\": \"contains\",
-                \"value\": \"Yz\"
+                \"value\": \"Y\"
             }
         ]
     }
@@ -206,7 +206,10 @@ Query Cars that have a year in `1971,2002` and a `make` that ends with `s`:
         \"constraints\": [
             {
                 \"operator\": \"in\",
-                \"value\": [1971,2002]
+                \"value\": [
+                    1971,
+                    2002
+                ]
             }
         ]
     }

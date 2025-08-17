@@ -1,6 +1,7 @@
 import logging
 import json
 
+from decimal import Decimal
 from typing import Optional
 
 from sqlalchemy import create_engine, text
@@ -189,75 +190,86 @@ class MySQLDal:
                 USING (`{Model.primary_key}`)
         """
 
-        params = {}
-        if query:
-            logging.info(query)
-            parts = []
-
-            for column_name, column_value in query.items():
-                if (
-                    "constraints" not in column_value
-                    or len(column_value["constraints"]) < 1
-                ):
-                    continue
-
-                col = (
-                    cls.column_map[column_name]
-                    if column_name in cls.column_map
-                    else column_name
-                )
-                op = column_value["operator"]
-                i = 0
-                inner_parts = []
-                for constraint in column_value["constraints"]:
-                    value = constraint["value"]
-                    param = f":arg_{col}_{i}"
-                    if constraint["operator"] == "equals":
-                        inner_parts.append(f"`{col}` = {param}")
-                    elif constraint["operator"] == "notEquals":
-                        inner_parts.append(f"`{col}` != {param}")
-                    elif constraint["operator"] == "startsWith":
-                        inner_parts.append(f"`{col}` LIKE {param}")
-                        value = f"{constraint['value']}%"
-                    elif constraint["operator"] == "endsWith":
-                        inner_parts.append(f"`{col}` LIKE {param}")
-                        value = f"%{constraint['value']}"
-                    elif constraint["operator"] == "contains":
-                        inner_parts.append(f"`{col}` LIKE {param}")
-                        value = f"%{constraint['value']}%"
-                    elif constraint["operator"] == "notContains":
-                        inner_parts.append(f"`{col}` NOT LIKE {param}")
-                        value = f"%{constraint['value']}%"
-                    elif constraint["operator"] == "lt":
-                        inner_parts.append(f"`{col}` < {param}")
-                    elif constraint["operator"] == "lte":
-                        inner_parts.append(f"`{col}` <= {param}")
-                    elif constraint["operator"] == "gt":
-                        inner_parts.append(f"`{col}` > {param}")
-                    elif constraint["operator"] == "gte":
-                        inner_parts.append(f"`{col}` >= {param}")
-                    elif constraint["operator"] == "in":
-                        inner_parts.append(f"`{col}` IN {param}")
-                        if type(value) is not list:
-                            value = [value]
-                    elif constraint["operator"] == "notIn":
-                        inner_parts.append(f"`{col}` NOT IN {param}")
-                        if type(value) is not list:
-                            value = [value]
-                    params[param[1:]] = value
-                    i += 1
-
-                parts.append(f"({f' {op} '.join(inner_parts)})")
-
-            if parts and len(parts) > 0:
-                query_string += f" WHERE ({f' AND '.join(parts)})"
+        where = self.__build_where_clause(cls, query)
+        query_string += where[0]
 
         if sort_field and sort_order:
             query_string += f" ORDER BY `{sort_field}` {sort_order}"
 
         logging.info(query_string)
-        logging.info(params)
-        return self.read_sql_query(query_string, params)
+        logging.info(where[1])
+        return self.read_sql_query(query_string, where[1])
+
+    def __build_where_clause(
+        self,
+        cls: Base,
+        query: Optional[dict] = None,
+    ) -> tuple[str, dict]:
+        if not query:
+            return "", {}
+
+        params = {}
+        parts = []
+
+        for column_name, column_value in query.items():
+            if (
+                "constraints" not in column_value
+                or len(column_value["constraints"]) < 1
+            ):
+                continue
+
+            col = (
+                cls.column_map[column_name]
+                if column_name in cls.column_map
+                else column_name
+            )
+            op = column_value["operator"]
+            i = 0
+            inner_parts = []
+            for constraint in column_value["constraints"]:
+                value = constraint["value"]
+                param = f":arg_{col}_{i}"
+                if constraint["operator"] == "equals":
+                    inner_parts.append(f"`{col}` = {param}")
+                elif constraint["operator"] == "notEquals":
+                    inner_parts.append(f"`{col}` != {param}")
+                elif constraint["operator"] == "startsWith":
+                    inner_parts.append(f"`{col}` LIKE {param}")
+                    value = f"{constraint['value']}%"
+                elif constraint["operator"] == "endsWith":
+                    inner_parts.append(f"`{col}` LIKE {param}")
+                    value = f"%{constraint['value']}"
+                elif constraint["operator"] == "contains":
+                    inner_parts.append(f"`{col}` LIKE {param}")
+                    value = f"%{constraint['value']}%"
+                elif constraint["operator"] == "notContains":
+                    inner_parts.append(f"`{col}` NOT LIKE {param}")
+                    value = f"%{constraint['value']}%"
+                elif constraint["operator"] == "lt":
+                    inner_parts.append(f"`{col}` < {param}")
+                elif constraint["operator"] == "lte":
+                    inner_parts.append(f"`{col}` <= {param}")
+                elif constraint["operator"] == "gt":
+                    inner_parts.append(f"`{col}` > {param}")
+                elif constraint["operator"] == "gte":
+                    inner_parts.append(f"`{col}` >= {param}")
+                elif constraint["operator"] == "in":
+                    inner_parts.append(f"`{col}` IN {param}")
+                    if type(value) is not list:
+                        value = [value]
+                elif constraint["operator"] == "notIn":
+                    inner_parts.append(f"`{col}` NOT IN {param}")
+                    if type(value) is not list:
+                        value = [value]
+                params[param[1:]] = value
+                i += 1
+
+            parts.append(f"({f' {op} '.join(inner_parts)})")
+
+        if parts and len(parts) > 0:
+            return f" WHERE ({f' AND '.join(parts)})", params
+
+        return "", {}
 
     def database_exists(self, db_name: str) -> bool:
         query_string = f"SELECT `SCHEMA_NAME` FROM `INFORMATION_SCHEMA`.`SCHEMATA` WHERE `SCHEMA_NAME` = :db_name"
