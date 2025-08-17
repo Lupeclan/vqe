@@ -5,6 +5,16 @@ from json import loads
 from flask_restx import Namespace, Resource
 from http.client import responses
 
+from sample_data.payloads import (
+    bike_gears_and_type_and_year,
+    car_colours,
+    car_make_and_year,
+    car_less_than_or_equal_seats,
+    spaceship_singular_model,
+    spaceship_two_models,
+    spaceship_manufacturer_and_year
+)
+
 from apis.namespaces.v1.models.requests import get_query_parser
 from apis.namespaces.v1.models.responses import (
     get_query_result,
@@ -53,64 +63,21 @@ spaceship_query_description = (
 
 Query all Spaceships that have a `model` equaling `Stardust Seeker`:
 
-```
-{
-    \"model\": {
-        \"operator\": \"and\",
-        \"constraints\": [
-            {
-                \"operator\": \"equals\",
-                \"value\": \"Stardust Seeker\"
-            }
-        ]
-    }
-}
-```
+```"""
+ + spaceship_singular_model + 
+"""```
 
 Query all Spaceships who's `model` equals `Nebula Rider` or `Stardust Seeker`:
 
-```
-{
-    \"model\": {
-        \"operator\": \"or\",
-        \"constraints\": [
-            {
-                \"operator\": \"equals\",
-                \"value\": \"Nebula Rider\"
-            },
-            {
-                \"operator\": \"equals\",
-                \"value\": \"Stardust Seeker\"
-            }
-        ]
-    }
-}
-```
+```"""
+ + spaceship_two_models + 
+"""```
 
 Query Spaceships that have a `manufacturer` of `AetherForge` after year `2010`:
 
-```
-{
-    \"manufacturer\": {
-        \"operator\": \"and\",
-        \"constraints\": [
-            {
-                \"operator\": \"equals\",
-                \"value\": \"AetherForge\"
-            }
-        ]
-    },
-    \"year\": {
-        \"operator\": \"and\",
-        \"constraints\": [
-            {
-                \"operator\": \"gt\",
-                \"value\": 2010
-            }
-        ]
-    }
-}
-```
+```"""
+ + spaceship_manufacturer_and_year + 
+"""```
 
 """
     + shared_description
@@ -160,67 +127,21 @@ car_query_description = (
 
 Query all Cars that have a `seats` less than or equal to `7`:
 
-```
-{
-    \"seats\": {
-        \"operator\": \"and\",
-        \"constraints\": [
-            {
-                \"operator\": \"lte\",
-                \"value\": 7
-            }
-        ]
-    }
-}
-```
+```"""
+ + car_less_than_or_equal_seats + 
+"""```
 
 Query all Cars who's `colour` starts with `Light` and contains `Y`:
 
-```
-{
-    \"colour\": {
-        \"operator\": \"and\",
-        \"constraints\": [
-            {
-                \"operator\": \"startsWith\",
-                \"value\": \"Light\"
-            },
-            {
-                \"operator\": \"contains\",
-                \"value\": \"Y\"
-            }
-        ]
-    }
-}
-```
+```"""
+ + car_colours + 
+"""```
 
 Query Cars that have a year in `1971,2002` and a `make` that ends with `s`:
 
-```
-{
-    \"make\": {
-        \"operator\": \"and\",
-        \"constraints\": [
-            {
-                \"operator\": \"endsWith\",
-                \"value\": \"s\"
-            }
-        ]
-    },
-    \"year\": {
-        \"operator\": \"and\",
-        \"constraints\": [
-            {
-                \"operator\": \"in\",
-                \"value\": [
-                    1971,
-                    2002
-                ]
-            }
-        ]
-    }
-}
-```
+```"""
+ + car_make_and_year + 
+"""```
 
 """
     + shared_description
@@ -262,44 +183,9 @@ bike_query_description = (
 
 Query Bikes that have a `gears` greater than `3`, a `type` that is not `BMX` or `Road`:
 
-```
-{
-    \"gears\": {
-        \"operator\": \"and\",
-        \"constraints\": [
-            {
-                \"operator\": \"gt\",
-                \"value\": 3
-            }
-        ]
-    },
-    \"type\": {
-        \"operator\": \"and\",
-        \"constraints\": [
-            {
-                \"operator\": \"notIn\",
-                \"value\": [
-                    "BMX",
-                    "Road"
-                ]
-            }
-        ]
-    },
-    \"year\": {
-        \"operator\": \"or\",
-        \"constraints\": [
-            {
-                \"operator\": \"equals\",
-                \"value\": 2023
-            },
-            {
-                \"operator\": \"equals\",
-                \"value\": 2014
-            }
-        ]
-    }
-}
-```
+```"""
+ + bike_gears_and_type_and_year + 
+"""```
 
 """
     + shared_description
